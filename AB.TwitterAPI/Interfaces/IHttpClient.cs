@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace AB.TwitterAPI.Models
+namespace AB.TwitterAPI.Interfaces
 {
     public interface IHttpClient
     {

@@ -27,8 +27,10 @@ namespace AB.TwitterAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            //services.Add<TwitterAPI.Managers.TwitterManager>();
-            services.AddHttpClient<Models.IHttpClient, Helpers.ClientHelper>();
+            services.AddScoped<TwitterAPI.Interfaces.IManager, TwitterAPI.Managers.TwitterManager>();
+            services.AddScoped<Interfaces.IHelper, Helpers.HttpClientHelper>();
+            services.AddHttpClient<Interfaces.IHttpClient, Helpers.HttpClientHelper>();
+            // services.AddHttpClient<Helpers.HttpClientHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

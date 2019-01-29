@@ -1,3 +1,4 @@
+using AB.TwitterAPI.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AB.TwitterAPI.Helpers 
 {
-    public class HttpClientHelper : AB.TwitterAPI.Models.IHttpClient
+    public class HttpClientHelper : IHttpClient, IHelper
     {
         private readonly HttpClient _client;
         public HttpClientHelper(HttpClient client)
