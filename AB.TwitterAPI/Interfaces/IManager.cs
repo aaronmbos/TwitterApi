@@ -10,6 +10,5 @@ namespace AB.TwitterAPI.Interfaces
 {
     public interface IManager
     {
-        bool TryParse<T, T2>(ref T model, out T2 outModel);
     }
 }

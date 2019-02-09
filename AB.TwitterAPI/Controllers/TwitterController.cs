@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AB.TwitterAPI.Managers;
+using AB.TwitterAPI.Models;
 
 namespace AB.TwitterAPI.Controllers
 {
@@ -19,7 +20,7 @@ namespace AB.TwitterAPI.Controllers
         }
         
         [HttpGet("search")]
-        public Task<object> Search() 
+        public Task<SearchResponse> Search() 
         {
             return  _twitterManager.Search();
         }
