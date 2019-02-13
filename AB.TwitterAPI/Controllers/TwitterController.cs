@@ -19,10 +19,16 @@ namespace AB.TwitterAPI.Controllers
             _twitterManager = (TwitterManager)twitterManager;
         }
         
-        [HttpGet("search")]
-        public Task<SearchResponse> Search() 
+        [HttpGet("Search/{accountName}/{resultType}")]
+        public Task<SearchResponse> Search(string accountName, string resultType) 
         {
-            return  _twitterManager.Search();
+            return  _twitterManager.Search(accountName, resultType);
+        }
+
+        [HttpGet("Oembed/{tweetId}")]
+        public Task<OembedResponse> Oembed(int tweetId, bool omitScript)
+        {
+            return new Task<OembedResponse>(() => new OembedResponse());
         }
     }
 }
