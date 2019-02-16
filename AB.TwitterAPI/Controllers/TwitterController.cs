@@ -22,13 +22,15 @@ namespace AB.TwitterAPI.Controllers
         [HttpGet("Search/{accountName}/{resultType}")]
         public Task<SearchResponse> Search(string accountName, string resultType) 
         {
-            return  _twitterManager.Search(accountName, resultType);
+            var guid = Guid.NewGuid();
+            Console.WriteLine(guid.ToString());
+            return  _twitterManager.SearchAsync(accountName, resultType);
         }
 
         [HttpGet("Oembed/{tweetId}")]
-        public Task<OembedResponse> Oembed(int tweetId, bool omitScript)
+        public OembedResponse Oembed(string tweetId, bool omitScript)
         {
-            return new Task<OembedResponse>(() => new OembedResponse());
+            return new OembedResponse();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AB.TwitterAPI.Helpers;
 using AB.TwitterAPI.Interfaces;
 using AB.TwitterAPI.Models;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
 namespace AB.TwitterAPI.Managers
@@ -10,20 +11,22 @@ namespace AB.TwitterAPI.Managers
     public class TwitterManager : IManager
     {        
         private HttpClientHelper _httpHelper;
+        private IConfiguration _configuration;
         // In prod this value would come from POST request to Twitter (Twitter recommends caching it) or stored in db
-        private const string BearerToken = "AAAAAAAAAAAAAAAAAAAAAIYc9QAAAAAABAU37w2rU38%2BQ%2FxpHAC06edYIl0%3Djjuv0lYn4SdZ0gIWbXso3GUJVXv14ZdtxK6jfLfjPo5vLzwsWf";
+        
         private const string BaseUrl = "https://api.twitter.com/";
-        private KeyValuePair<string, string> AuthorizationHeader => new KeyValuePair<string, string>("Authorization", $"Bearer {BearerToken}");
-        public TwitterManager(IHttpClient httpHelper) 
+        private KeyValuePair<string, string> AuthorizationHeader => new KeyValuePair<string, string>("Authorization", $"Bearer {_configuration["Twitter:BearerToken"]}");
+        public TwitterManager(IHttpClient httpHelper, IConfiguration configuration) 
         {
             _httpHelper = (HttpClientHelper)httpHelper;
+            _configuration = configuration;
         }
 
         public TwitterManager()
         {
         }
 
-        public async Task<SearchResponse> Search(string accountName, string resultType)
+        public async Task<SearchResponse> SearchAsync(string accountName, string resultType)
         {
             //https://api.twitter.com/1.1/search/tweets.json?q=from%3A@HuskerFBNation&result_type=recent
             var searchResponse = new SearchResponse();
