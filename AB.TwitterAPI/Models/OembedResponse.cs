@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace AB.TwitterAPI.Models
 {
-    public class OembedResponse
+    public class OembedResponse : ModelBase
     {
         public string Url { get; set; }
         [JsonProperty("author_name")]

@@ -20,12 +20,14 @@ namespace AB.TwitterAPI.Helpers
         public async Task<HttpResponseMessage> Get(System.Uri baseAddress, string url, Dictionary<string, string> headers)
         {
             _client.BaseAddress = baseAddress;
-
-            foreach (var header in headers)
+            if (headers != null)
             {
-                _client.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
+                foreach (var header in headers)
+                {
+                    _client.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
+                }
             }
-
+            
             return await _client.GetAsync(url);
         }
     }

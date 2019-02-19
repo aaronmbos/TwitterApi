@@ -33,20 +33,38 @@ namespace AB.TwitterAPI.Managers
             if (ValidateSearchParams(accountName, resultType, ref searchResponse)) 
             {
                 var authHeader = new Dictionary<string, string>() { {AuthorizationHeader.Key, AuthorizationHeader.Value } };
-                var test = await _httpHelper.Get(new System.Uri(BaseUrl), $"https://api.twitter.com/1.1/search/tweets.json?q=from%3A{accountName}&result_type={resultType}", authHeader);
+                var response = await _httpHelper.Get(new System.Uri(BaseUrl), $"https://api.twitter.com/1.1/search/tweets.json?q=from%3A{accountName}&result_type={resultType}", authHeader);
                 
-                if (test.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
-                    ParseSearch(ref searchResponse, await test.Content.ReadAsStringAsync());
+                    ParseSearch(ref searchResponse, await response.Content.ReadAsStringAsync());
                 }
                 else 
                 {
                     searchResponse.Success = false;
-                    searchResponse.Message = $"The request was unsuccessful. Status Code: {test.StatusCode}";
+                    searchResponse.Message = $"The request was unsuccessful. Status Code: {response.StatusCode}";
                 }
             }
             
             return searchResponse;
+        }
+
+        public async Task<OembedResponse> GetOembedAsync(string tweetId, bool omitScript)
+        {
+            var oembedResponse = new OembedResponse();
+            string escapedUri = System.Uri.EscapeUriString($"https://twitter.com/twitter/status/{tweetId}");
+            var response = await _httpHelper.Get(new System.Uri("https://publish.twitter.com/"), $"https://publish.twitter.com/oembed?url={escapedUri}&omit_script={omitScript}", null);
+
+            if (response.IsSuccessStatusCode)
+            {
+                ParseOembed(ref oembedResponse, await response.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                oembedResponse.Success = false;
+                oembedResponse.Message = $"The request was unsuccessful. Status Code: {response.StatusCode}";
+            }
+            return oembedResponse;
         }
 
         private bool ValidateSearchParams(string accountName, string resultType, ref SearchResponse searchResponse) 
@@ -85,6 +103,20 @@ namespace AB.TwitterAPI.Managers
             {
                 searchResponse.Success = false;
                 searchResponse.Message = "An error occurred parsing the statuses.";
+            }
+        }
+
+        private void ParseOembed(ref OembedResponse oembedResponse, string responseString)
+        {
+            try
+            {
+                oembedResponse = JsonConvert.DeserializeObject<OembedResponse>(responseString);
+                oembedResponse.Success = true;
+            }
+            catch (System.Exception)
+            {
+                oembedResponse.Success = false;
+                oembedResponse.Message = "An error occurred parsing the response.";
             }
         }
     }
