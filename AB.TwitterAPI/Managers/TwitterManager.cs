@@ -12,7 +12,6 @@ namespace AB.TwitterAPI.Managers
     {        
         private HttpClientHelper _httpHelper;
         private IConfiguration _configuration;
-        // In prod this value would come from POST request to Twitter (Twitter recommends caching it) or stored in db
         
         private const string BaseUrl = "https://api.twitter.com/";
         private KeyValuePair<string, string> AuthorizationHeader => new KeyValuePair<string, string>("Authorization", $"Bearer {_configuration["Twitter:BearerToken"]}");
