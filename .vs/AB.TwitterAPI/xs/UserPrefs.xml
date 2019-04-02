@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{D3925774-8E02-425A-84CB-73ABF510A402}|Default">
+  <MonoDevelop.Ide.ItemProperties.AB.TweetWebApp PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.AB.TwitterAPI PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AB.TwitterAPI/Controllers/TwitterController.cs">
+    <Files>
+      <File FileName="AB.TwitterAPI/Controllers/TwitterController.cs" Line="3" Column="34" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="AB.TwitterAPI" expanded="True">
+            <Node name="AB.TwitterAPI" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="TwitterController.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/usr/local/share/dotnet/sdk/3.0.100-preview3-010431/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" line="228" column="5" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
