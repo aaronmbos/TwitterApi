@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AB.TwitterAPI.Helpers 
+namespace AB.TwitterAPI.Utils 
 {
-    internal static class ValidationHelper
+    public static class ValidationUtil
     {
-        internal static bool IsValidLength(int minLength, int maxLength, string str)
+        public static bool IsValidLength(int minLength, int maxLength, string str)
         {
             return str?.Length >= minLength && str?.Length <= maxLength;
         }

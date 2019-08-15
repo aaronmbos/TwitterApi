@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using AB.TwitterAPI.Managers;
 using AB.TwitterAPI.Models;
 
 namespace AB.TwitterAPI.Controllers
@@ -13,22 +12,22 @@ namespace AB.TwitterAPI.Controllers
     [ApiController]
     public class TwitterController : ControllerBase
     {
-        private readonly TwitterManager _twitterManager;
-        public TwitterController(IManager twitterManager) 
+        private readonly ITwitterService _twitterService;
+        public TwitterController(ITwitterService twitterService) 
         {
-            _twitterManager = (TwitterManager)twitterManager;
+            _twitterService = twitterService;
         }
         
         [HttpGet("Search/{accountName}/{resultType}")]
-        public Task<SearchResponse> Search(string accountName, string resultType) 
+        public async Task<SearchResponse> Search(string accountName, string resultType) 
         {
-            return  _twitterManager.SearchAsync(accountName, resultType);
+            return  await _twitterService.SearchAsync(accountName, resultType);
         }
 
         [HttpGet("Oembed/{tweetId}")]
-        public Task<OembedResponse> Oembed(string tweetId, bool omitScript)
+        public async Task<OembedResponse> Oembed(string tweetId, bool omitScript)
         {
-            return _twitterManager.GetOembedAsync(tweetId, omitScript);
+            return await _twitterService.GetOembedAsync(tweetId, omitScript);
         }
     }
 }

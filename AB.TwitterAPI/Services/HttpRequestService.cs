@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AB.TwitterAPI.Helpers 
+namespace AB.TwitterAPI.Services 
 {
-    public class HttpClientHelper : IHttpClient, IHelper
+    public class HttpRequestService : IHttpRequestService
     {
         private readonly HttpClient _client;
-        public HttpClientHelper(HttpClient client)
+        public HttpRequestService(HttpClient client)
         {
             _client = client;
         }
 
-        public async Task<HttpResponseMessage> Get(System.Uri baseAddress, string url, Dictionary<string, string> headers)
+        public async Task<HttpResponseMessage> GetAsync(System.Uri baseAddress, string url, Dictionary<string, string> headers)
         {
             _client.BaseAddress = baseAddress;
             if (headers != null)

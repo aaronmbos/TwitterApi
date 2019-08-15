@@ -1,27 +1,27 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AB.TwitterAPI.Helpers;
 using AB.TwitterAPI.Interfaces;
 using AB.TwitterAPI.Models;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using AB.TwitterAPI.Utils;
 
-namespace AB.TwitterAPI.Managers
+namespace AB.TwitterAPI.Services
 {
-    public class TwitterManager : IManager
+    public class TwitterService : ITwitterService
     {        
-        private HttpClientHelper _httpHelper;
+        private IHttpRequestService _httpRequestService;
         private IConfiguration _configuration;
         
         private const string BaseUrl = "https://api.twitter.com/";
         private KeyValuePair<string, string> AuthorizationHeader => new KeyValuePair<string, string>("Authorization", $"Bearer {_configuration["Twitter:BearerToken"]}");
-        public TwitterManager(IHttpClient httpHelper, IConfiguration configuration) 
+        public TwitterService(IHttpRequestService httpRequestService, IConfiguration configuration) 
         {
-            _httpHelper = (HttpClientHelper)httpHelper;
+            _httpRequestService = httpRequestService;
             _configuration = configuration;
         }
 
-        public TwitterManager()
+        public TwitterService()
         {
         }
 
@@ -32,7 +32,7 @@ namespace AB.TwitterAPI.Managers
             if (ValidateSearchParams(accountName, resultType, ref searchResponse)) 
             {
                 var authHeader = new Dictionary<string, string>() { {AuthorizationHeader.Key, AuthorizationHeader.Value } };
-                var response = await _httpHelper.Get(new System.Uri(BaseUrl), $"https://api.twitter.com/1.1/search/tweets.json?q=from%3A{accountName}&result_type={resultType}", authHeader);
+                var response = await _httpRequestService.GetAsync(new System.Uri(BaseUrl), $"https://api.twitter.com/1.1/search/tweets.json?q=from%3A{accountName}&result_type={resultType}", authHeader);
                 
                 if (response.IsSuccessStatusCode)
                 {
@@ -44,7 +44,6 @@ namespace AB.TwitterAPI.Managers
                     searchResponse.Message = $"The request was unsuccessful. Status Code: {response.StatusCode}";
                 }
             }
-            
             return searchResponse;
         }
 
@@ -52,7 +51,7 @@ namespace AB.TwitterAPI.Managers
         {
             var oembedResponse = new OembedResponse();
             string escapedUri = System.Uri.EscapeUriString($"https://twitter.com/twitter/status/{tweetId}");
-            var response = await _httpHelper.Get(new System.Uri("https://publish.twitter.com/"), $"https://publish.twitter.com/oembed?url={escapedUri}&omit_script={omitScript}", null);
+            var response = await _httpRequestService.GetAsync(new System.Uri("https://publish.twitter.com/"), $"https://publish.twitter.com/oembed?url={escapedUri}&omit_script={omitScript}", null);
 
             if (response.IsSuccessStatusCode)
             {
@@ -75,7 +74,7 @@ namespace AB.TwitterAPI.Managers
                 searchResponse.Success = false;
                 isValid = false;
             }
-            else if (!ValidationHelper.IsValidLength(1, 15, accountName))
+            else if (!ValidationUtil.IsValidLength(1, 15, accountName))
             {
                 searchResponse.Message = $"Parameter: {nameof(accountName)} is an invalid character length.";
                 searchResponse.Success = false;

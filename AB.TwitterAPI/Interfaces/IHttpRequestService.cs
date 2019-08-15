@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Http;
 
 namespace AB.TwitterAPI.Interfaces
 {
-    public interface IHttpClient
+    public interface IHttpRequestService
     {
-         Task<HttpResponseMessage> Get(System.Uri baseAddress, string url, Dictionary<string, string> headers);
+         Task<HttpResponseMessage> GetAsync(System.Uri baseAddress, string url, Dictionary<string, string> headers);
     }
 }
