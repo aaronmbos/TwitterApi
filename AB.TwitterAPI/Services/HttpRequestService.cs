@@ -19,6 +19,8 @@ namespace AB.TwitterAPI.Services
 
         public async Task<HttpResponseMessage> GetAsync(System.Uri baseAddress, string url, Dictionary<string, string> headers)
         {
+            if (baseAddress == null) { throw new ArgumentNullException(nameof(baseAddress)); }
+            if (url == null) { throw new ArgumentNullException(nameof(url)); }
             _client.BaseAddress = baseAddress;
             if (headers != null)
             {
