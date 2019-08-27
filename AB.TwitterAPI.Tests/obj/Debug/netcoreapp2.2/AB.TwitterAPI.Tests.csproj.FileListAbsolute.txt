@@ -6,12 +6,12 @@
 /Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/bin/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.runtimeconfig.dev.json
 /Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/bin/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.dll
 /Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/bin/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.pdb
-/Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/obj/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.csproj.CoreCompileInputs.cache
-/Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/obj/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.AssemblyInfoInputs.cache
-/Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/obj/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.AssemblyInfo.cs
-/Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/obj/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.dll
-/Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/obj/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.pdb
 /Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/bin/Debug/netcoreapp2.2/AB.TwitterAPI.dll
 /Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/bin/Debug/netcoreapp2.2/AB.TwitterAPI.pdb
 /Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/obj/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.csprojAssemblyReference.cache
+/Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/obj/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.csproj.CoreCompileInputs.cache
+/Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/obj/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.AssemblyInfoInputs.cache
+/Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/obj/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.AssemblyInfo.cs
 /Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/obj/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.csproj.CopyComplete
+/Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/obj/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.dll
+/Users/BosFamily/Desktop/Aaron/Source/Repos/AB.TwitterAPI/AB.TwitterAPI.Tests/obj/Debug/netcoreapp2.2/AB.TwitterAPI.Tests.pdb
