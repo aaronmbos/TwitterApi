@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using AB.TwitterAPI.Interfaces;
 using AB.TwitterAPI.Services;
 using NUnit.Framework;
@@ -17,7 +18,7 @@ namespace AB.TwitterAPI.Tests
         }
 
         [Test]
-        public async void GetAsync_WithBaseAddress_ReturnsResponse()
+        public async Task GetAsync_WithBaseAddress_ReturnsResponse()
         {
             IHttpRequestService httpReqSvc = new HttpRequestService(new HttpClient());
             object resp = await httpReqSvc.GetAsync(new Uri("https://google.com"), string.Empty, null);
