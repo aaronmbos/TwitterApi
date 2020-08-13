@@ -1,43 +1,42 @@
-using NUnit.Framework;
 using AB.TwitterAPI.Utils;
+using Xunit;
 
-namespace AB.TwitterAPI.Tests
+namespace AB.TwitterAPI.Facts
 {
-    [TestFixture]
-    public class UtilityTests
+    public class UtilityFacts
     {
-        [Test]
+        [Fact]
         public void ValidStringLengthShouldReturnTrue()
         {
             string test = "test";
-            Assert.IsTrue(ValidationUtil.IsValidLength(0, test.Length + 5, test));
+            Assert.True(ValidationUtil.IsValidLength(0, test.Length + 5, test));
         }
 
-        [Test]
+        [Fact]
         public void ValidStringLengthEqualToMinShouldReturnTrue()
         {
             string test = string.Empty;
-            Assert.IsTrue(ValidationUtil.IsValidLength(0, test.Length + 5, test));
+            Assert.True(ValidationUtil.IsValidLength(0, test.Length + 5, test));
         }
 
-        [Test]
+        [Fact]
         public void ValidStringLengthEqualToMaxShouldReturnTrue() 
         {
             string test = "test";
-            Assert.IsTrue(ValidationUtil.IsValidLength(0, test.Length, test));
+            Assert.True(ValidationUtil.IsValidLength(0, test.Length, test));
         }
 
-        [Test]
+        [Fact]
         public void InvalidStringLengthGreaterThanMaxShouldReturnFalse()
         {
             string test = "test";
-            Assert.IsFalse(ValidationUtil.IsValidLength(0, test.Length - 1, test));
+            Assert.False(ValidationUtil.IsValidLength(0, test.Length - 1, test));
         }
 
-        [Test]
+        [Fact]
         public void ValidStringLengthNullShouldReturnFalse()
         {
-            Assert.IsFalse(ValidationUtil.IsValidLength(0, 10, null));
+            Assert.False(ValidationUtil.IsValidLength(0, 10, null));
         }
     }
 }
