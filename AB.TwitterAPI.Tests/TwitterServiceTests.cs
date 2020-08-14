@@ -17,6 +17,7 @@ namespace AB.TwitterAPI.Tests
         [InlineData("", "", false)]
         [InlineData("Jack", "", false)]
         [InlineData("", "recent", false)]
+        [Theory]
         public async Task SearchAsync_WithInvalidParams_ReturnsFalse(string accountName, string resultType, bool expectedResult)
         {
             var configStub = new Mock<IConfiguration>();
@@ -30,6 +31,7 @@ namespace AB.TwitterAPI.Tests
 
         [InlineData("Jack", "recent")]
         [InlineData("AaronMBos", "recent")]
+        [Theory]
         public async Task SearchAsync_WithValidParams_ReturnsTrue(string accountName, string resultType) 
         {
             var configStub = new Mock<IConfiguration>();

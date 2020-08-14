@@ -1,4 +1,5 @@
 using AB.TwitterAPI.Utils;
+using System.Collections.Generic;
 using Xunit;
 
 namespace AB.TwitterAPI.Facts
@@ -6,10 +7,13 @@ namespace AB.TwitterAPI.Facts
     public class UtilityFacts
     {
         [Fact]
-        public void ValidStringLengthShouldReturnTrue()
+        public void IsValidLength_WithValidStringLength_ReturnsTrue()
         {
             string test = "test";
-            Assert.True(ValidationUtil.IsValidLength(0, test.Length + 5, test));
+
+            var result = ValidationUtil.IsValidLength(0, test.Length + 5, test);
+            
+            Assert.True(result);
         }
 
         [Fact]
